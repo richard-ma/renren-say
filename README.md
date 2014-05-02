@@ -27,6 +27,7 @@ Renren dot com status robot
 
 * 命令行下运行renren-say.py
 * 也可将此命令使用cron定时运行
+    * 将cron.sh下的cd命令目录更改为你的renren-say路径
 
 插件开发
 ----------

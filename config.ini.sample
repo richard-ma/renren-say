@@ -1,3 +1,6 @@
 [renren]
 email=your-email@domain.com
 password=your-password
+
+[runtime]
+mode=random

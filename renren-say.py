@@ -19,14 +19,14 @@ class RenrenSay():
 
     def start(self):
         sayer = SayFactory()
-        content = sayer.create('Simple').say()
-        print content
+        content = sayer.create(self.config.get('runtime', 'mode')).say()
         user = Renren()
         user.login(
                 self.config.get('renren', 'email'),
                 self.config.get('renren', 'password'))
         user.postmessage(content)
+        return content
 
 if __name__ == "__main__":
     renren_say = RenrenSay()
-    renren_say.start()
+    print renren_say.start()

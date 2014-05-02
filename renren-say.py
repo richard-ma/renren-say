@@ -18,8 +18,9 @@ class RenrenSay():
         self.config.read(config_file)
 
     def start(self):
-        sayer = SayFactory()
-        content = sayer.create(self.config.get('runtime', 'mode')).say()
+        say_factory = SayFactory()
+        sayer = say_factory.create(self.config.get('runtime', 'mode'))
+        content = '[' + sayer.__class__.__name__ + ']' + sayer.say()
         user = Renren()
         user.login(
                 self.config.get('renren', 'email'),

@@ -26,7 +26,7 @@ Renren dot com status robot
 ----------
 
 * 命令行下运行renren-say.py
-* 也可将次命令使用cron定时运行
+* 也可将此命令使用cron定时运行
 
 插件开发
 ----------

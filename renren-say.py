@@ -4,7 +4,9 @@
 import sys
 
 import ConfigParser
+
 from lib.Renren import Renren
+from SayFactory import SayFactory
 
 class RenrenSay():
     def __init__(self):
@@ -16,11 +18,13 @@ class RenrenSay():
         self.config.read(config_file)
 
     def start(self):
+        sayer = SayFactory()
+        content = sayer.create('Simple').say()
+        print content
         user = Renren()
         user.login(
                 self.config.get('renren', 'email'),
                 self.config.get('renren', 'password'))
-        content = "余额宝今日七天年化收益率为: " + nianhuashouyilv + "%"
         user.postmessage(content)
 
 if __name__ == "__main__":

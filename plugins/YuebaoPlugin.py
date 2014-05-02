@@ -1,19 +1,14 @@
 #!/usr/bin/env python
 #-- coding:utf-8 --
 
-import sys
-sys.path.append("../")
-
 from Say import Say
 
 import urllib2
 import re
 
-class Yuebao(Say):
+class YuebaoPlugin(Say):
 
     def __init__(self):
-        Say.__init__()
-
         url = "https://financeprod.alipay.com/fund/index.htm"
         req = urllib2.Request(url)
         html = urllib2.urlopen(req).read()
@@ -31,7 +26,7 @@ class Yuebao(Say):
 
 if __name__ == "__main__":
 # should return true
-    test = Yuebao()
+    test = YuebaoPlugin()
     print test.say()
 # should error
     test.shouyilv = False

@@ -38,7 +38,7 @@ Renren dot com status robot
 * 在plugins目录下新建一个文件xxxPlugin.py
 * 文件内容为一个类，类名和文件名相同
 * xxxPlugin类中必须有\_\_init\_\_和say两个方法
-* 细节请参考目录中的SimplePlugins.py和YuebaoPlugin.py两个文件
+* 细节请参考目录中的SimplePlugin.py和YuebaoPlugin.py两个文件
 
 TODO
 ----------

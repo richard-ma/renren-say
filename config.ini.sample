@@ -4,3 +4,4 @@ password=your-password
 
 [runtime]
 mode=random
+debug=False

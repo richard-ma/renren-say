@@ -25,7 +25,8 @@ class RenrenSay():
         user.login(
                 self.config.get('renren', 'email'),
                 self.config.get('renren', 'password'))
-        user.postmessage(content)
+        if self.config.getboolean('runtime', 'debug') == False:
+            user.postmessage(content)
         return content
 
 if __name__ == "__main__":

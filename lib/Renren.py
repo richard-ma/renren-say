@@ -56,5 +56,5 @@ class Renren():
 
 if __name__ == '__main__':
     testuser = Renren()
-    print testuser.login('richard.ma.19850509@gmail.com', 'nicdell2650')
+    print testuser.login('test-user', 'test-password')
     testuser.postmessage('renren-say testing.')

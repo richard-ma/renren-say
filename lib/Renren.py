@@ -26,33 +26,30 @@ class Renren():
         self.file=urllib2.urlopen(res).read()
 
         # get uid, tok and rtk
-        idPos = self.file.index("'id':'")
+        idPos = self.file.index("id : \"")
         self.uid=self.file[idPos+6:idPos+15]
-        tokPos=self.file.index("get_check:'")
-        self.tok=self.file[tokPos+11:tokPos+21]
-        rtkPos=self.file.index("get_check_x:'")
-        self.rtk=self.file[rtkPos+13:rtkPos+21]
+        tokPos=self.file.index("requestToken : '")
+        self.tok=self.file[tokPos+16:tokPos+27]
+        rtkPos=self.file.index("_rtk : '")
+        self.rtk=self.file[rtkPos+8:rtkPos+16]
 
         # get homepage and test login successfully or failed
         res = urllib2.urlopen("http://www.renren.com/home")
         html = res.read()
-        uid = re.search("'ruid':'(\d+)'",html).group(1)
+        uid = re.search("ruid:'(\d+)'",html)
         return uid
 
     def postmessage(self,content):
-        # make post data
-        url = "http://shell.renren.com/"+self.uid+"/status"
-        postdata = {'content':content,
-                    'hostid':self.uid,
-                    'requetToken':self.tok,
-                    '_rtk':self.rtk,
-                    'channel':'renren',
-                   }
-        log_data = urllib.urlencode(postdata)
-        req2 = urllib2.Request(url,log_data)
-
-        # send data
-        self.hax = urllib2.urlopen(req2).read()
+        post_path='http://shell.renren.com/'+self.uid+'/status';
+        post_data=urllib.urlencode({
+            'content':content,
+            'privacyParams':"{'sourceControl': 99}",
+            'requestToken':self.tok,
+            '_rtk':self.rtk,
+            'channel':'renren',
+            });
+        req=urllib2.Request(post_path,post_data);
+        self.hax = urllib2.urlopen(req).read();
 
 if __name__ == '__main__':
     testuser = Renren()
